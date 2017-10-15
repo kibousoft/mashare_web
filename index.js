@@ -14,6 +14,11 @@ function initialize() {
 	document.getElementById("introduction-area").style.display = "none";
 	var text = decodeURIComponent(location.hash).substring(1, location.hash.length);
 	document.getElementById("share-preview").innerHTML = text;
+	
+	var host = getCookie("host");
+	if (host) {
+	  	document.getElementById("hostname-text").value = host;
+	}
 }
 
 function share(host) {
@@ -24,7 +29,20 @@ function share(host) {
 	   	 return;
 	   }
 	   host = value;
+	   document.cookie = "host=" + host;
 	}
 	var text = decodeURIComponent(location.hash.substring(1, location.hash.length));
 	location.href = "https://" + host + "/share?text=" + text;
+}
+
+function getCookie(cn) {
+    var name = cn+"=";
+    var allCookie = decodeURIComponent(document.cookie).split(';');
+    var cval = [];
+    for(var i=0; i < allCookie.length; i++) {
+        if (allCookie[i].trim().indexOf(name) == 0) {
+            cval = allCookie[i].trim().split("=");
+        }   
+    }
+    return (cval.length > 0) ? cval[1] : nil;
 }
