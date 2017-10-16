@@ -31,8 +31,8 @@ function share(host) {
 	   host = value;
 	   document.cookie = "host=" + host;
 	}
-	var text = decodeURIComponent(location.hash.substring(1, location.hash.length));
-	location.href = "https://" + host + "/share?text=" + text;
+	var text = decodeURIComponent(location.hash).substring(1, location.hash.length);
+	location.href = "https://" + host + "/share?text=" + encodeURIComponent(text);
 }
 
 function getCookie(cn) {
