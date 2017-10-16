@@ -1,6 +1,6 @@
 function generate() {
 	var message = document.getElementById("message-text").value;
-	var result = '<a href="https://masha.re/#' + encodeURIComponent(message) + '"><img src="https://masha.re/share.png"></a>';
+	var result = '<a href="https://masha.re/#' + encodeURIComponent(message) + '" target="_blank"><img src="https://masha.re/share.png"></a>';
 	document.getElementById("result-area").style.display = "block"; 
 	document.getElementById("result-text").value = result;
 	document.getElementById("result-preview").innerHTML = result;
